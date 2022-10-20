@@ -222,15 +222,18 @@ function moonraker_setup() {
 }
 
 function clone_moonraker() {
-  local repo=${1}
+  local repo=${1} branch=${2}
 
   status_msg "Cloning Moonraker from ${repo} ..."
 
+  [[ -z ${branch} ]] && branch="Z-BOLTUI2"
   ### force remove existing moonraker dir and clone into fresh moonraker dir
   [[ -d ${MOONRAKER_DIR} ]] && rm -rf "${MOONRAKER_DIR}"
 
   cd "${HOME}" || exit 1
-  if ! git clone "${MOONRAKER_REPO}" "${MOONRAKER_DIR}"; then
+  if git clone "${MOONRAKER_REPO}" "${MOONRAKER_DIR}"; then
+    cd "${MOONRAKER_DIR}" && git checkout "${branch}"
+  else  
     print_error "Cloning Moonraker from\n ${repo}\n failed!"
     exit 1
   fi
