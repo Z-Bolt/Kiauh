@@ -47,7 +47,7 @@ function klipperscreen_setup() {
   dependency_check "${dep[@]}"
   status_msg "Cloning KlipperScreen from ${KLIPPERSCREEN_REPO} ..."
  
- [[ -z ${branch} ]] && branch="Z-BOLTUI2"
+ [[ -z ${branch} ]] && branch="Shaper2"
 
   # force remove existing KlipperScreen dir
   [[ -d ${KLIPPERSCREEN_DIR} ]] && rm -rf "${KLIPPERSCREEN_DIR}"
@@ -223,7 +223,7 @@ function patch_klipperscreen_update_manager() {
 [update_manager KlipperScreen]
 type: git_repo
 path: ${HOME}/KlipperScreen
-primary_branch: Z-BOLTUI2
+primary_branch: Shaper2
 origin: https://github.com/Z-Bolt/KlipperScreen.git
 env: ${HOME}/.KlipperScreen-env/bin/python
 requirements: scripts/KlipperScreen-requirements.txt
